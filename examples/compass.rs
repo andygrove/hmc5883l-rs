@@ -14,7 +14,7 @@ fn main() {
     let declination_angle = 0.22; // you need to set this based on your location
 
     loop {
-        let (x, y, z) = mag.read().unwrap();
+        let (x, z, y) = mag.read().unwrap();
 
         // convert to micro-teslas
         let (x, y, z) = (x/gauss_lsb_xy*100.0, y/gauss_lsb_xy*100.0, z/gauss_lsb_z*100.0);
@@ -33,7 +33,7 @@ fn main() {
         // Convert radians to degrees for readability.
         heading = heading * 180.0 / PI;
 
-        println!("x={}, y={}, z={} uT: heading={:.*}", x, y, z, 1, heading);
+        println!("x={:.*}, y={:.*}, z={:.*} uT: heading={:.*}", 1, x, 1, y, 1, z, 1, heading);
 //        println!("heading={:.*}", 1, heading);
 
         thread::sleep(Duration::from_millis(500));

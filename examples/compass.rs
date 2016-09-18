@@ -31,7 +31,8 @@ fn main() {
         // Convert radians to degrees for readability.
         heading = heading * 180.0 / PI;
 
-        println!("x={}, y={}, z={} uT: heading={}", x, y, z, heading);
+//        println!("x={}, y={}, z={} uT: heading={:.*}", x, y, z, 1, heading);
+        println!("heading={:.*}", 1, heading);
 
         thread::sleep(Duration::from_millis(100));
     }

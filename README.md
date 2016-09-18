@@ -1,4 +1,8 @@
 # hmc5883l-rs
+
+[![Version](https://img.shields.io/crates/v/hmc5883l.svg)](https://crates.io/crates/hmc5883l)
+[![Docs](https://docs.rs/mysql-proxy/badge.svg)](https://docs.rs/hmc5883l)
+
 Rust library for the HMC5883L magnetometer
 
 This code lets you read x, y, z values from an HMC5883L magnetometer in Rust. This code will only work on Linux platforms and has only been tested on the Raspberry Pi 3.

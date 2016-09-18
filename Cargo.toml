@@ -1,7 +1,12 @@
 [package]
 name = "hmc5883l"
+description = "Rust library for interfacing with HMC5883L magnetometer using I2C on Linux"
 version = "1.0.0"
 authors = ["Andy Grove <andygrove73@gmail.com>"]
+homepage = "https://github.com/andygrove/hmc5883l-rs"
+documentation = "https://github.com/andygrove/hmc5883l-rs"
+repository = "https://github.com/andygrove/hmc5883l-rs"
+license = "Apache-2.0"
 
 [dependencies]
 i2cdev = "0.3.1"

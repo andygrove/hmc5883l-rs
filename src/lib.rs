@@ -44,3 +44,12 @@ impl HMC5883L {
     }
 
 }
+
+fn calc_bearing() {
+//    X: 38.18  Y: -13.18  Z: -15.10  uT
+//    Heading (degrees): 353.56
+
+}
+
+
+

@@ -8,11 +8,11 @@ extern crate i2cdev;
 use self::i2cdev::core::*;
 use self::i2cdev::linux::{LinuxI2CDevice, LinuxI2CError};
 
-pub struct Compass {
+pub struct HMC5883L {
     dev: Box<LinuxI2CDevice>
 }
 
-impl Compass {
+impl HMC5883L {
 
     pub fn new(filename: &'static str, address: u16) -> Result<Self, Box<LinuxI2CError>> {
 
@@ -21,7 +21,7 @@ impl Compass {
         // set in continuous mode
         try!(dev.smbus_write_byte_data(0x02, 0x00));
 
-        Ok(Compass { dev: Box::new(dev) })
+        Ok(HMC5883L { dev: Box::new(dev) })
     }
 
     pub fn read(&mut self) -> Result<(f32, f32, f32), Box<LinuxI2CError>> {

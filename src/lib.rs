@@ -20,6 +20,9 @@ impl HMC5883L {
 
         // set in continuous mode
         try!(dev.smbus_write_byte_data(0x02, 0x00));
+       
+        // set gain 
+        try!(dev.smbus_write_byte_data(0x01, 0x20));
 
         Ok(HMC5883L { dev: Box::new(dev) })
     }

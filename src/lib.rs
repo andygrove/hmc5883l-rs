@@ -8,7 +8,6 @@ extern crate i2cdev;
 use self::i2cdev::core::*;
 use self::i2cdev::linux::{LinuxI2CDevice, LinuxI2CError};
 
-
 pub struct HMC5883L {
     dev: Box<LinuxI2CDevice>
 }
@@ -40,14 +39,8 @@ impl HMC5883L {
         let y = rdr.read_i16::<BigEndian>().unwrap() as f32;
         let z = rdr.read_i16::<BigEndian>().unwrap() as f32;
 
-        let SENSORS_GAUSS_TO_MICROTESLA = 100.0;
-        let _hmc5883_Gauss_LSB_XY = 1100.0;  // Varies with gain
-        let _hmc5883_Gauss_LSB_Z  = 980.0;   // Varies with gain
-
         // return tuple containing x, y, z values
-        Ok((x/_hmc5883_Gauss_LSB_XY*SENSORS_GAUSS_TO_MICROTESLA,
-            y/_hmc5883_Gauss_LSB_XY*SENSORS_GAUSS_TO_MICROTESLA,
-            z/_hmc5883_Gauss_LSB_Z*SENSORS_GAUSS_TO_MICROTESLA))
+        Ok((x, y, z))
     }
 
 }

@@ -5,9 +5,11 @@
 
 Rust library for the HMC5883L magnetometer
 
-This code lets you read x, y, z values from an HMC5883L magnetometer in Rust. This code will only work on Linux platforms and has only been tested on the Raspberry Pi 3.
+This code lets you read x, y, z values from an HMC5883L magnetometer in Rust. This code will only work on Linux platforms and has only been tested on the Raspberry Pi 3 using this HMC5883L breakout: https://www.sparkfun.com/products/10530
 
-## Usage
+The default I2C address for this board is 0x1E but if you have a different board or just the raw IC then check the datasheet for the appropriate address to use.
+
+## Basic Usage
 
 ```rust
 let mut mag = HMC5883L::new("/dev/i2c-1", 0x1E).unwrap();
@@ -23,20 +25,22 @@ loop {
 
 You will need to connect SDA and SCL on the Pi to the corresponding pins on the magnetometer, as well as connecting 3.3V and GND.
 
-## Running the example
+## Running the examples
 
-To run the example:
+There are currently two examples. The `magnetometer` example shows the raw x, y, z values, and the `compass` example extends this by also calculating the approximate heading.
 
 ```rust
-cargo run --example example
+cargo run --example compass
 ```
 
 
 You should see output like this. The values will change as your move the magnetometer.
 
 ```
-x=498, y=583, z=262
-x=478, y=568, z=303
-x=451, y=579, z=325
-x=454, y=574, z=328
+x=7.0, y=19.9, z=-16.4 uT: heading=83.2
+x=4.6, y=21.4, z=-15.8 uT: heading=90.4
+x=4.0, y=21.8, z=-16.0 uT: heading=92.2
+x=24.5, y=-21.3, z=-14.0 uT: heading=331.7
+x=24.7, y=-9.5, z=-16.8 uT: heading=351.7
+x=25.4, y=-8.5, z=-16.3 uT: heading=354.0
 ```
